@@ -1,0 +1,24 @@
+{
+  "name": "ts2py",
+  "version": "0.0.1",
+  "description": "A library to create interfaces from TypeScript to Python3",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified, todo: add them\" && exit 1",
+    "prepublishOnly": "tsc"
+  },
+  "keywords": [
+    "TypeScript",
+    "Python",
+    "IPC"
+  ],
+  "author": "Mikhail Kormanovskii",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "5.7.3"
+  },
+  "dependencies": {
+    "@types/node": "22.12.0"
+  }
+}
