@@ -1,6 +1,6 @@
 {
   "name": "ts2py",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A library to create interfaces from TypeScript to Python3",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

@@ -90,8 +90,8 @@ if __name__ == "__main__":
         }),
 
         cleanup: () => {
-            outPipe.end();
-            inPipe.end();
+            outPipe.destroy();
+            inPipe.destroy();
             pyProcess.kill('SIGTERM');
             rmSync(firstFifoPath);
             rmSync(secondFifoPath);
