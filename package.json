@@ -8,6 +8,10 @@
     "test": "echo \"Error: no test specified, todo: add them\" && exit 1",
     "prepublishOnly": "tsc"
   },
+  "files": [
+    "dist/",
+    "package.json"
+  ],
   "keywords": [
     "TypeScript",
     "Python",
