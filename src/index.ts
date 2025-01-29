@@ -4,6 +4,8 @@ import { Socket } from "node:net";
 
 import { PyInterfaceOptions } from "./interface";
 
+export * from "./interface";
+
 export function makePythonInterface(opts: PyInterfaceOptions) {
     const firstFifoPath = `./ts2py-${new Date().getTime()}.fifo`;
     const secondFifoPath = `./py2ts-${new Date().getTime()}.fifo`;
@@ -28,10 +30,10 @@ if __name__ == "__main__":
             while not line.startswith('END'):
                 cmd, *args = line.split()
                 if cmd == 'CALL':
-                    call['func'] = args[0]
+                    call['func'] = args[0].strip()
                     call['args'] = []
                 elif cmd == 'ARG':
-                    call['args'].append(loads(args[0]))
+                    call['args'].append(loads(line[3:].strip()))
                 line = in_fifo.readline()
         with open(out_fifo_path, "w") as out_fifo: 
             out_fifo.write(dumps(globals()[call['func']](*call['args'])) + '__RET_VALUE_END__')
@@ -49,8 +51,6 @@ if __name__ == "__main__":
             stdio: 'inherit'
         }
     );
-
-    pyProcess.on('exit', process.exit);
 
     let readData = '';
     let fullReadCb: (data: any) => void = () => null;
